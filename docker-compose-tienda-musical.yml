@@ -1,0 +1,13 @@
+
+version: '3.8'
+
+services:
+  wildfly:
+    image: jboss/wildfly:latest
+    container_name: wildfly-tienda-musical
+    ports:
+      - "8080:8080"
+    
+    volumes:
+      - ./tiendamusical-web/target:/opt/jboss/wildfly/standalone/deployments
+    restart: always

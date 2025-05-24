@@ -16,7 +16,7 @@
 	<!-- ::::::::::::::: PERMITE EL USO DE ANOTACIONES CON SPRING EN EL BASE PACKAGE MENCIONADO ::::::::: -->
 
 	<context:annotation-config></context:annotation-config>
-	<context:component-scan base-package="com.devpredator"></context:component-scan>
+	<context:component-scan base-package="com.ad"></context:component-scan>
 	
 	<!-- ::::::::::::::: SE CARGA EL ARCHIVO DE CONFIGURACION PROPERTIES ::::::::::::::: -->
 	
@@ -39,7 +39,7 @@
 	
 	<bean id="emf" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
 		<property name="dataSource" ref="dataSource"></property>
-		<property name="packagesToScan" value="com.devpredator.tiendamusicalentities.entities"></property>
+		<property name="packagesToScan" value="com.ad.tiendamusicalentities.entities"></property>
 		<property name="jpaProperties">
 			<props>
 				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
@@ -64,5 +64,5 @@
 	
 	<!-- :::::::::::::::: ETIQUETA QUE PERMITE REGISTRAR LAS CLASES QUE SE ENCARGAN DE EJECUTAR LAS TRANSACCIONES A LA BASE DE DATOS (DAO) ::::::::: -->
 	
-	<jpa:repositories base-package="com.devpredator.tiendamusicaldata.repositories" entity-manager-factory-ref="emf"></jpa:repositories>
+	<jpa:repositories base-package="com.ad.tiendamusicaldata.repositories" entity-manager-factory-ref="emf"></jpa:repositories>
 </beans>
