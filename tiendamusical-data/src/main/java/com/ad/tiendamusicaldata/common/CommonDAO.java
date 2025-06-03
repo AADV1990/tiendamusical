@@ -11,7 +11,7 @@ import java.util.List;
 
 //clase generica que representa los metodos de crud que se utiliza en todas las entidades
 //E significa la entidad, R el repositorio
-public class CommonDAO<E,R extends PagingAndSortingRepository<E,Long>> {
+public class CommonDAO<E,id,R extends PagingAndSortingRepository<E,id>> {
    // @Autowired
     protected R repository;
 
