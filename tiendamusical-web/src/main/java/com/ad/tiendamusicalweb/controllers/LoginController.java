@@ -1,6 +1,7 @@
 package com.ad.tiendamusicalweb.controllers;
 
 import com.ad.tiendamusical.services.service.LoginService;
+import com.ad.tiendamusical.session.SessionBean;
 import com.ad.tiendamusicalentities.entities.Persona;
 import com.ad.tiendamusicalweb.utils.CommonUtils;
 
@@ -9,6 +10,7 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.view.ViewScoped;
+import java.io.IOException;
 import java.io.Serializable;
 
 @ManagedBean(name = "loginController")
@@ -23,6 +25,10 @@ public class LoginController implements Serializable {
 
     private LoginService loginServiceImpl;
 
+    @ManagedProperty(value = "#{sessionBean}")
+
+    private SessionBean sessionBean;
+
 
 
     @PostConstruct
@@ -34,8 +40,13 @@ public class LoginController implements Serializable {
 
         Persona personaConsultada = this.loginServiceImpl.consultarUsuarioLogin(this.usuario, this.password);
         if (personaConsultada != null) {
-            CommonUtils.mostrarMensaje(FacesMessage.SEVERITY_INFO, "Bienvenido", "Bienvenido al sistema");
-            System.out.println("¿LoginServiceImpl es nulo?: " + (loginServiceImpl == null));
+            try {
+                this.sessionBean.setPersona(personaConsultada);
+                CommonUtils.redireccionar("/pages/commons/dashboard.xhtml");
+            } catch (IOException e) {
+                e.printStackTrace();
+                CommonUtils.mostrarMensaje(FacesMessage.SEVERITY_FATAL, "Ups", "Ocurrio un error al intentar iniciar sesión");
+            }
 
         } else {
             CommonUtils.mostrarMensaje(FacesMessage.SEVERITY_ERROR, "Ups", "El usuario y/o contraseña son incorrectos");
@@ -63,5 +74,13 @@ public class LoginController implements Serializable {
 
     public void setLoginServiceImpl(LoginService loginServiceImpl) {
         this.loginServiceImpl = loginServiceImpl;
+    }
+
+    public SessionBean getSessionBean() {
+        return sessionBean;
+    }
+
+    public void setSessionBean(SessionBean sessionBean) {
+        this.sessionBean = sessionBean;
     }
 }

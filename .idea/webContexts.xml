@@ -4,6 +4,7 @@
     <option name="state">
       <map>
         <entry key="file://$PROJECT_DIR$/tiendamusical-web/src/main/webapp/login.xhtml" value="file://$PROJECT_DIR$/tiendamusical-web/src/main/webapp" />
+        <entry key="file://$PROJECT_DIR$/tiendamusical-web/src/main/webapp/pages/commons/dashboard.xhtml" value="file://$PROJECT_DIR$/tiendamusical-web/src/main/webapp/pages/commons" />
       </map>
     </option>
   </component>
