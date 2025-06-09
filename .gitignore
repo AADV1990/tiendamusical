@@ -1,21 +1,26 @@
-.settings
-.project
-tiendamusical-data/.settings
-tiendamusical-data/target
-tiendamusical-data/.classpath
-tiendamusical-data/.project
+# Archivos y carpetas comunes de IntelliJ IDEA
+.idea/
+*.iml
+*.iws
 
-tiendamusical-entities/.settings
-tiendamusical-entities/target
-tiendamusical-entities/.classpath
-tiendamusical-entities/.project
+# Directorios de compilación
+target/
+*/target/
 
-tiendamusical-services/.settings
-tiendamusical-services/target
-tiendamusical-services/.classpath
-tiendamusical-services/.project
+# Archivos específicos de Eclipse (por si lo abriste alguna vez con él)
+*.classpath
+*.project
+.settings/
+*/.classpath
+*/.project
+*/.settings
 
-tiendamusical-web/.settings
-tiendamusical-web/target
-tiendamusical-web/.classpath
-tiendamusical-web/.project
+# Archivos del sistema operativo
+.DS_Store
+Thumbs.db
+
+# Archivos de log y temporales
+*.log
+*.tmp
+*.bak
+*.swp
