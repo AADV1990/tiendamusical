@@ -6,10 +6,12 @@ import com.ad.tiendamusical.services.service.HomeService;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
+import javax.faces.bean.ViewScoped;
 import java.util.List;
 
 //clase que controla el flujo de informacion para la pantalla home de cualquier tipo de usuario
 @ManagedBean
+@ViewScoped
 public class HomeController {
     //texto ingresado por el cliente en el buscador
     private String filtro;
@@ -18,6 +20,9 @@ public class HomeController {
     //Se inyecta el objeto de spring con jsf para obtener los metodos de la logica de negocio del home
     @ManagedProperty("#{homeServiceImpl}")
     private HomeService homeServiceImpl;
+
+    private String layout = "grid";
+
 
     //inicializando la pantalla
     @PostConstruct
@@ -47,6 +52,14 @@ public class HomeController {
 
     public void setArtistasAlbumDTO(List<ArtistaAlbumDTO> artistasAlbumDTO) {
         this.artistasAlbumDTO = artistasAlbumDTO;
+    }
+
+    public String getLayout() {
+        return layout;
+    }
+
+    public void setLayout(String layout) {
+        this.layout = layout;
     }
 
     public HomeService getHomeServiceImpl() {

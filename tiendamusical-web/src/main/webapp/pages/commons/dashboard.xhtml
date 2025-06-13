@@ -2,7 +2,8 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 
 
 <h:head>
@@ -12,20 +13,26 @@
 <h:body style="background-color: black">
     <div class="ui-fluid">
         <h:form id="formDashboard">
+            <ui:include src="/pages/commons/navbar.xhtml"></ui:include>
             <div class="p-grid sample-Layout">
                 <div class="p-col-12 p-md-2" style="background-color: black">
+                    <p:commandLink>
+                        <p:graphicImage name="iamgenes/fondo_musica.png" width="100%"/>
+                    </p:commandLink>
                     <ui:include src="/pages/commons/panelmenu.xhtml"></ui:include>
                 </div>
                 <div class="p-col-12 p-md-10 p-col-nogutter" style="background-color: black">
                     <div class="p-grid"></div>
                     <div class="p-col-12">
                         <!--                    //   pantallas del cliente-->
-                        <ui:include src="/pages/cliente/home.xhtml"></ui:include>
+                        <c:if test="#{sessionBean.persona.idRol == 4}">
+                            <ui:include src="/pages/cliente/home.xhtml"></ui:include>
+                        </c:if>
                     </div>
 
                 </div>
                 <div class="p-col-12" style="background-color: black">
-                    Pie de Pagina
+                    <p:outputLabel value="@Copyright by AD" style="color: white"></p:outputLabel>
                 </div>
 
             </div>
